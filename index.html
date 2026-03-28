@@ -27,7 +27,8 @@
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; background: rgba(10,10,10,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
     header.scrolled { border-color: var(--border); }
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; letter-spacing: -0.02em; }
+    .logo { height: 36px; }
+    .logo img { height: 100%; width: auto; }
     nav { display: flex; gap: 32px; align-items: center; }
     nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
     nav a:hover { color: var(--text); }
@@ -40,7 +41,8 @@
     /* Hero */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 80px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
-    .hero-logo { font-size: 3rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 40px; animation: fadeInUp 0.8s ease-out; }
+    .hero-logo { margin-bottom: 40px; animation: fadeInUp 0.8s ease-out; }
+    .hero-logo img { height: 100px; width: auto; }
     .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 24px; line-height: 1.1; animation: fadeInUp 0.8s ease-out 0.1s both; }
     .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 40px; animation: fadeInUp 0.8s ease-out 0.2s both; }
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 0.8s ease-out 0.3s both; }
@@ -108,7 +110,8 @@
     
     /* Footer */
     footer { padding: 48px 20px; border-top: 1px solid var(--border); text-align: center; }
-    .footer-logo { font-size: 1.25rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.02em; }
+    .footer-logo { height: 28px; }
+    .footer-logo img { height: 100%; width: auto; }
     footer p { color: var(--text-secondary); font-size: 0.875rem; }
     
     /* Animations */
@@ -141,7 +144,7 @@
 <body>
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">Mattera</a>
+      <a href="#" class="logo"><img src="logo.png" alt="Mattera"></a>
       <nav id="nav">
         <a href="#servicios">Servicios</a>
         <a href="#nosotros">Nosotros</a>
@@ -156,7 +159,7 @@
   </header>
 
   <section class="hero">
-    <div class="hero-logo">Mattera</div>
+    <div class="hero-logo"><img src="logo.png" alt="Mattera"></div>
     <h1>Automatiza tu negocio.<br>Escala sin límites.</h1>
     <p>En Mattera creamos soluciones de automatización personalizadas para negocios que quieren crecer eficientemente. Chatbots, CRMs, integraciones y más.</p>
     <div class="hero-btns">
@@ -384,7 +387,7 @@
   </section>
 
   <footer>
-    <div class="footer-logo">Mattera</div>
+    <div class="footer-logo"><img src="logo.png" alt="Mattera"></div>
     <p>&copy; 2026 Mattera. Automatizaciones para Negocios. Todos los derechos reservados.</p>
   </footer>
 
