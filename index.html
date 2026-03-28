@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mattera | Automatizaciones para Negocios</title>
+  <meta name="description" content="Automatiza tu negocio con chatbots, agentes IA, CRMs e integraciones. Solutions personalizadas para empresas en Guadalajara y todo México.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #262626;
+      --text: #ffffff;
+      --text-secondary: #a1a1a1;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    
+    /* Header */
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; background: rgba(10,10,10,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+    header.scrolled { border-color: var(--border); }
+    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { height: 40px; }
+    .logo svg { height: 100%; width: auto; fill: white; }
+    nav { display: flex; gap: 32px; align-items: center; }
+    nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn:hover { background: var(--accent-hover); transform: scale(1.02); box-shadow: 0 0 30px rgba(99, 102, 241, 0.3); }
+    .btn-secondary { background: transparent; border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); background: transparent; box-shadow: none; }
+    .mobile-menu-btn { display: none; background: none; border: none; color: white; cursor: pointer; }
+    
+    /* Hero */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
+    .hero-logo { height: 80px; margin-bottom: 40px; animation: fadeInUp 0.8s ease-out; }
+    .hero-logo svg { height: 100%; width: auto; fill: white; }
+    .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 24px; line-height: 1.1; animation: fadeInUp 0.8s ease-out 0.1s both; }
+    .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 40px; animation: fadeInUp 0.8s ease-out 0.2s both; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 0.8s ease-out 0.3s both; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(99,102,241,0.1); color: var(--accent); border-radius: 20px; font-size: 0.875rem; font-weight: 500; margin-top: 48px; animation: fadeInUp 0.8s ease-out 0.4s both; }
+    
+    /* Sections */
+    section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+    .section-label { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    .section-title { font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 16px; }
+    .section-subtitle { font-size: 1.125rem; color: var(--text-secondary); max-width: 600px; }
+    
+    /* Services */
+    .services { background: var(--surface); border-radius: 24px; padding: 80px 40px; margin: 40px auto; border: 1px solid var(--border); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .service-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.3s; }
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .service-icon { width: 48px; height: 48px; color: var(--accent); margin-bottom: 20px; }
+    .service-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
+    .service-card p { color: var(--text-secondary); font-size: 0.95rem; }
+    
+    /* Why Mattera */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 64px; }
+    .why-item { text-align: center; }
+    .why-icon { width: 64px; height: 64px; background: rgba(99,102,241,0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: var(--accent); }
+    .why-item h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
+    .why-item p { color: var(--text-secondary); font-size: 0.95rem; }
+    
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 80px; text-align: center; }
+    .stat-num { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .stat-label { color: var(--text-secondary); font-size: 1rem; }
+    
+    /* Process */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 64px; position: relative; }
+    .process-grid::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: var(--border); }
+    .process-step { text-align: center; position: relative; }
+    .step-num { width: 80px; height: 80px; background: var(--surface); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 0 auto 20px; position: relative; z-index: 1; }
+    .process-step h4 { font-size: 1.125rem; font-weight: 600; margin-bottom: 8px; }
+    .process-step p { color: var(--text-secondary); font-size: 0.9rem; }
+    
+    /* Contact */
+    #contacto { background: var(--surface); border-radius: 24px; padding: 80px 40px; margin: 40px auto; border: 1px solid var(--border); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 48px; }
+    .contact-info h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 24px; }
+    .contact-info p { color: var(--text-secondary); margin-bottom: 24px; }
+    .contact-item { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; color: var(--text-secondary); }
+    .contact-item i { color: var(--accent); width: 24px; height: 24px; }
+    
+    /* Form */
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 8px; }
+    .form-group label span { color: var(--accent); }
+    .form-input { width: 100%; padding: 14px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 1rem; font-family: inherit; transition: border-color 0.2s; }
+    .form-input:focus { outline: none; border-color: var(--accent); }
+    .form-input::placeholder { color: var(--text-secondary); }
+    .form-input.error { border-color: #ef4444; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    select.form-input { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a1a1a1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px; padding-right: 44px; }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+    .form-error { color: #ef4444; font-size: 0.8rem; margin-top: 6px; display: none; }
+    .form-success { display: none; text-align: center; padding: 48px; }
+    .form-success i { width: 64px; height: 64px; color: #22c55e; margin-bottom: 24px; }
+    .form-success h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    .form-success p { color: var(--text-secondary); }
+    
+    /* Footer */
+    footer { padding: 48px 20px; border-top: 1px solid var(--border); text-align: center; }
+    .footer-logo { height: 32px; margin-bottom: 24px; }
+    .footer-logo svg { height: 100%; width: auto; fill: white; }
+    footer p { color: var(--text-secondary); font-size: 0.875rem; }
+    
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    
+    /* Mobile */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+      .process-grid::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; }
+      nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg); flex-direction: column; justify-content: center; align-items: center; gap: 32px; }
+      nav.open { display: flex; }
+      nav a { font-size: 1.25rem; }
+      .mobile-menu-btn { display: block; }
+      .hero { padding: 100px 20px 60px; }
+      .services, #contacto { padding: 60px 20px; border-radius: 16px; }
+      .services-grid, .why-grid, .stats { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; width: 100%; max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 4L16 28L24 4H28L19.5 30H14.5L6 4H8ZM32 4V28H40V20H48C54 20 58 16 58 12C58 8 54 4 48 4H32ZM40 8H47C50 8 52 10 52 12C52 14 50 16 47 16H40V8ZM68 4V28H76V18H82L88 28H96L88 16C94 14 98 10 98 6C98 0 92 4 88 4H68ZM76 8H85C87 8 89 9 89 12C89 15 87 16 85 16H76V8ZM110 4V28H118V20H122L130 28H138L128 18C134 16 138 12 138 8C138 2 132 4 128 4H110ZM118 8H126C128 8 130 9 130 12C130 15 128 16 126 16H118V8Z"/>
+        </svg>
+      </a>
+      <nav id="nav">
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="btn">Solicitar Cotización</a>
+      </nav>
+      <button class="mobile-menu-btn" id="menuBtn">
+        <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-logo">
+      <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 4L16 28L24 4H28L19.5 30H14.5L6 4H8ZM32 4V28H40V20H48C54 20 58 16 58 12C58 8 54 4 48 4H32ZM40 8H47C50 8 52 10 52 12C52 14 50 16 47 16H40V8ZM68 4V28H76V18H82L88 28H96L88 16C94 14 98 10 98 6C98 0 92 4 88 4H68ZM76 8H85C87 8 89 9 89 12C89 15 87 16 85 16H76V8ZM110 4V28H118V20H122L130 28H138L128 18C134 16 138 12 138 8C138 2 132 4 128 4H110ZM118 8H126C128 8 130 9 130 12C130 15 128 16 126 16H118V8Z"/>
+      </svg>
+    </div>
+    <h1>Automatiza tu negocio.<br>Escala sin límites.</h1>
+    <p>En Mattera creamos soluciones de automatización personalizadas para negocios que quieren crecer eficientemente. Chatbots, CRMs, integraciones y más.</p>
+    <div class="hero-btns">
+      <a href="#contacto" class="btn">
+        <i data-lucide="message-square" style="width: 18px; height: 18px;"></i>
+        Solicitar Cotización
+      </a>
+      <a href="#servicios" class="btn btn-secondary">
+        <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+        Ver Servicios
+      </a>
+    </div>
+    <div class="badge">
+      <i data-lucide="check-circle" style="width: 16px; height: 16px;"></i>
+      Más de 50 negocios automatizados en Jalisco
+    </div>
+  </section>
+
+  <section id="servicios" class="services">
+    <div class="section-label">
+      <i data-lucide="zap" style="width: 16px; height: 16px;"></i>
+      Servicios
+    </div>
+    <h2 class="section-title">Automatizaciones para cada necesidad</h2>
+    <p class="section-subtitle">No importa el tamaño ni el giro de tu negocio. Tenemos la solución perfecta para ti.</p>
+    
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <i data-lucide="bot" class="service-icon"></i>
+        <h3>Chatbots Inteligentes</h3>
+        <p>Atención a clientes 24/7 con IA que entiende y responde de forma natural.</p>
+      </div>
+      <div class="service-card reveal">
+        <i data-lucide="brain" class="service-icon"></i>
+        <h3>Agentes IA</h3>
+        <p>Automatiza tareas repetitivas con agentes inteligentes que aprenden y mejoran.</p>
+      </div>
+      <div class="service-card reveal">
+        <i data-lucide="users" class="service-icon"></i>
+        <h3>CRM Personalizado</h3>
+        <p>Gestiona tus clientes y ventas a tu manera, sin adaptarte a sistemas rígidos.</p>
+      </div>
+      <div class="service-card reveal">
+        <i data-lucide="plug" class="service-icon"></i>
+        <h3>Integraciones</h3>
+        <p>Conecta todos tus sistemas y elimina el trabajo manual entre plataformas.</p>
+      </div>
+      <div class="service-card reveal">
+        <i data-lucide="workflow" class="service-icon"></i>
+        <h3>Automatización de Procesos</h3>
+        <p>Streamline flujos de trabajo empresariales para que hagas más en menos tiempo.</p>
+      </div>
+      <div class="service-card reveal">
+        <i data-lucide="bar-chart-3" class="service-icon"></i>
+        <h3>Reportes y Analytics</h3>
+        <p>Datos que te ayudan a tomar mejores decisiones para tu negocio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <div class="section-label">
+      <i data-lucide="star" style="width: 16px; height: 16px;"></i>
+      ¿Por qué Mattera?
+    </div>
+    <h2 class="section-title">Tu socio en automatización</h2>
+    <p class="section-subtitle">No somos solo proveedores. Somos tu equipo de tecnología.</p>
+    
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="why-icon">
+          <i data-lucide="rocket" style="width: 28px; height: 28px;"></i>
+        </div>
+        <h3>Rapidez</h3>
+        <p>Implementamos en semanas, no meses. Ves resultados desde el día uno.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon">
+          <i data-lucide="settings-2" style="width: 28px; height: 28px;"></i>
+        </div>
+        <h3>Personalización</h3>
+        <p>Soluciones a tu medida, no plantillas genéricas que no encajan.</p>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-icon">
+          <i data-lucide="hand-heart" style="width: 28px; height: 28px;"></i>
+        </div>
+        <h3>Soporte Continuo</h3>
+        <p>Te acompañamos y optimizamos constantemente post-implementación.</p>
+      </div>
+    </div>
+    
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Negocios automatizados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">95%</div>
+        <div class="stat-label">Satisfacción de clientes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso">
+    <div class="section-label">
+      <i data-lucide="map" style="width: 16px; height: 16px;"></i>
+      Proceso
+    </div>
+    <h2 class="section-title">Así trabajamos</h2>
+    <p class="section-subtitle">Un proceso claro y transparente de principio a fin.</p>
+    
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="step-num">1</div>
+        <h4>Diagnóstico</h4>
+        <p>Escuchamos tu negocio y detectamos oportunidades de automatización.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">2</div>
+        <h4>Propuesta</h4>
+        <p>Diseñamos la solución perfecta para tus necesidades específicas.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">3</div>
+        <h4>Implementación</h4>
+        <p>Desarrollamos y conectamos todo para que funcione seamlessly.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">4</div>
+        <h4>Soporte</h4>
+        <p>Te acompañamos y optimizamos constantemente después del launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="section-label">
+      <i data-lucide="mail" style="width: 16px; height: 16px;"></i>
+      Contacto
+    </div>
+    <h2 class="section-title">¿Listo para automatizar?</h2>
+    <p class="section-subtitle">Cuéntanos sobre tu proyecto y te cotizamos sin compromiso.</p>
+    
+    <div class="contact-grid">
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo <span>*</span></label>
+            <input type="text" class="form-input" name="nombre" placeholder="Tu nombre" required>
+            <div class="form-error">Por favor ingresa tu nombre</div>
+          </div>
+          <div class="form-group">
+            <label>Email empresarial <span>*</span></label>
+            <input type="email" class="form-input" name="email" placeholder="correo@tuempresa.com" required>
+            <div class="form-error">Ingresa un email válido</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" class="form-input" name="telefono" placeholder="33 1234 5678">
+          </div>
+          <div class="form-group">
+            <label>Nombre del negocio</label>
+            <input type="text" class="form-input" name="negocio" placeholder="Nombre de tu empresa">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tipo de automatización <span>*</span></label>
+          <select class="form-input" name="tipo" required>
+            <option value="">Selecciona una opción</option>
+            <option value="chatbot">Chatbot</option>
+            <option value="agente">Agente IA</option>
+            <option value="crm">CRM</option>
+            <option value="integracion">Integración</option>
+            <option value="procesos">Automatización de procesos</option>
+            <option value="otro">Otro</option>
+          </select>
+          <div class="form-error">Selecciona una opción</div>
+        </div>
+        <div class="form-group">
+          <label>Describe tu proyecto <span>*</span></label>
+          <textarea class="form-input" name="mensaje" placeholder="Cuéntanos qué necesitas automatizar, qué problemas tienes actualmente, o cualquier detalle que consideres relevante..." required></textarea>
+          <div class="form-error">Por favor describe tu proyecto</div>
+        </div>
+        <button type="submit" class="btn" style="width: 100%; justify-content: center;">
+          <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+          Enviar Solicitud
+        </button>
+      </form>
+      
+      <div class="contact-info">
+        <h3>Hablemos de tu proyecto</h3>
+        <p>Estamos ubicados en Guadalajara, Jalisco, pero trabajamos con negocios en todo México. Contáctanos por el canal que prefieras.</p>
+        
+        <div class="contact-item">
+          <i data-lucide="map-pin" style="width: 20px; height: 20px;"></i>
+          <span>Guadalajara, Jalisco, México</span>
+        </div>
+        <div class="contact-item">
+          <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+          <span>hola@mattera.mx</span>
+        </div>
+        <div class="contact-item">
+          <i data-lucide="phone" style="width: 20px; height: 20px;"></i>
+          <span>+52 33 1234 5678</span>
+        </div>
+        <div class="contact-item">
+          <i data-lucide="clock" style="width: 20px; height: 20px;"></i>
+          <span>Lun - Vie: 9:00 AM - 6:00 PM</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-success" id="formSuccess">
+      <i data-lucide="check-circle" style="width: 64px; height: 64px;"></i>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Gracias por contactarnos. Te responderemos en menos de 24 horas.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 4L16 28L24 4H28L19.5 30H14.5L6 4H8ZM32 4V28H40V20H48C54 20 58 16 58 12C58 8 54 4 48 4H32ZM40 8H47C50 8 52 10 52 12C52 14 50 16 47 16H40V8ZM68 4V28H76V18H82L88 28H96L88 16C94 14 98 10 98 6C98 0 92 4 88 4H68ZM76 8H85C87 8 89 9 89 12C89 15 87 16 85 16H76V8ZM110 4V28H118V20H122L130 28H138L128 18C134 16 138 12 138 8C138 2 132 4 128 4H110ZM118 8H126C128 8 130 9 130 12C130 15 128 16 126 16H118V8Z"/>
+      </svg>
+    </div>
+    <p>&copy; 2026 Mattera. Automatizaciones para Negocios. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const nav = document.getElementById('nav');
+    menuBtn.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      const icon = menuBtn.querySelector('i');
+      if (nav.classList.contains('open')) {
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    });
+    
+    // Close menu on link click
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+      });
+    });
+    
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+    
+    // Form validation and submission
+    const form = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+    
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isValid = true;
+      
+      // Reset errors
+      form.querySelectorAll('.form-input').forEach(input => {
+        input.classList.remove('error');
+        const error = input.parentElement.querySelector('.form-error');
+        if (error) error.style.display = 'none';
+      });
+      
+      // Validate required fields
+      form.querySelectorAll('[required]').forEach(field => {
+        if (!field.value.trim()) {
+          field.classList.add('error');
+          const error = field.parentElement.querySelector('.form-error');
+          if (error) error.style.display = 'block';
+          isValid = false;
+        }
+      });
+      
+      // Validate email
+      const emailField = form.querySelector('[name="email"]');
+      if (emailField.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)) {
+        emailField.classList.add('error');
+        const error = emailField.parentElement.querySelector('.form-error');
+        if (error) error.style.display = 'block';
+        isValid = false;
+      }
+      
+      if (isValid) {
+        // Hide form, show success
+        form.style.display = 'none';
+        formSuccess.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
