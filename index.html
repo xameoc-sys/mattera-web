@@ -27,8 +27,7 @@
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; background: rgba(10,10,10,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
     header.scrolled { border-color: var(--border); }
     .header-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .logo { height: 40px; }
-    .logo svg { height: 100%; width: auto; fill: white; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: white; text-decoration: none; letter-spacing: -0.02em; }
     nav { display: flex; gap: 32px; align-items: center; }
     nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
     nav a:hover { color: var(--text); }
@@ -41,8 +40,7 @@
     /* Hero */
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 80px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); pointer-events: none; }
-    .hero-logo { height: 80px; margin-bottom: 40px; animation: fadeInUp 0.8s ease-out; }
-    .hero-logo svg { height: 100%; width: auto; fill: white; }
+    .hero-logo { font-size: 3rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 40px; animation: fadeInUp 0.8s ease-out; }
     .hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 24px; line-height: 1.1; animation: fadeInUp 0.8s ease-out 0.1s both; }
     .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin-bottom: 40px; animation: fadeInUp 0.8s ease-out 0.2s both; }
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; animation: fadeInUp 0.8s ease-out 0.3s both; }
@@ -110,8 +108,7 @@
     
     /* Footer */
     footer { padding: 48px 20px; border-top: 1px solid var(--border); text-align: center; }
-    .footer-logo { height: 32px; margin-bottom: 24px; }
-    .footer-logo svg { height: 100%; width: auto; fill: white; }
+    .footer-logo { font-size: 1.25rem; font-weight: 700; margin-bottom: 24px; letter-spacing: -0.02em; }
     footer p { color: var(--text-secondary); font-size: 0.875rem; }
     
     /* Animations */
@@ -144,11 +141,7 @@
 <body>
   <header>
     <div class="header-inner">
-      <a href="#" class="logo">
-        <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 4L16 28L24 4H28L19.5 30H14.5L6 4H8ZM32 4V28H40V20H48C54 20 58 16 58 12C58 8 54 4 48 4H32ZM40 8H47C50 8 52 10 52 12C52 14 50 16 47 16H40V8ZM68 4V28H76V18H82L88 28H96L88 16C94 14 98 10 98 6C98 0 92 4 88 4H68ZM76 8H85C87 8 89 9 89 12C89 15 87 16 85 16H76V8ZM110 4V28H118V20H122L130 28H138L128 18C134 16 138 12 138 8C138 2 132 4 128 4H110ZM118 8H126C128 8 130 9 130 12C130 15 128 16 126 16H118V8Z"/>
-        </svg>
-      </a>
+      <a href="#" class="logo">Mattera</a>
       <nav id="nav">
         <a href="#servicios">Servicios</a>
         <a href="#nosotros">Nosotros</a>
@@ -163,11 +156,7 @@
   </header>
 
   <section class="hero">
-    <div class="hero-logo">
-      <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 4L16 28L24 4H28L19.5 30H14.5L6 4H8ZM32 4V28H40V20H48C54 20 58 16 58 12C58 8 54 4 48 4H32ZM40 8H47C50 8 52 10 52 12C52 14 50 16 47 16H40V8ZM68 4V28H76V18H82L88 28H96L88 16C94 14 98 10 98 6C98 0 92 4 88 4H68ZM76 8H85C87 8 89 9 89 12C89 15 87 16 85 16H76V8ZM110 4V28H118V20H122L130 28H138L128 18C134 16 138 12 138 8C138 2 132 4 128 4H110ZM118 8H126C128 8 130 9 130 12C130 15 128 16 126 16H118V8Z"/>
-      </svg>
-    </div>
+    <div class="hero-logo">Mattera</div>
     <h1>Automatiza tu negocio.<br>Escala sin límites.</h1>
     <p>En Mattera creamos soluciones de automatización personalizadas para negocios que quieren crecer eficientemente. Chatbots, CRMs, integraciones y más.</p>
     <div class="hero-btns">
@@ -395,11 +384,7 @@
   </section>
 
   <footer>
-    <div class="footer-logo">
-      <svg viewBox="0 0 120 32" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 4L16 28L24 4H28L19.5 30H14.5L6 4H8ZM32 4V28H40V20H48C54 20 58 16 58 12C58 8 54 4 48 4H32ZM40 8H47C50 8 52 10 52 12C52 14 50 16 47 16H40V8ZM68 4V28H76V18H82L88 28H96L88 16C94 14 98 10 98 6C98 0 92 4 88 4H68ZM76 8H85C87 8 89 9 89 12C89 15 87 16 85 16H76V8ZM110 4V28H118V20H122L130 28H138L128 18C134 16 138 12 138 8C138 2 132 4 128 4H110ZM118 8H126C128 8 130 9 130 12C130 15 128 16 126 16H118V8Z"/>
-      </svg>
-    </div>
+    <div class="footer-logo">Mattera</div>
     <p>&copy; 2026 Mattera. Automatizaciones para Negocios. Todos los derechos reservados.</p>
   </footer>
 
