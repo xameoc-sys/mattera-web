@@ -473,9 +473,31 @@
       }
       
       if (isValid) {
-        // Hide form, show success
-        form.style.display = 'none';
-        formSuccess.style.display = 'block';
+        // Collect form data
+        const formData = {
+          nombre: form.querySelector('[name="nombre"]').value,
+          email: form.querySelector('[name="email"]').value,
+          telefono: form.querySelector('[name="telefono"]').value,
+          negocio: form.querySelector('[name="negocio"]').value,
+          tipo: form.querySelector('[name="tipo"]').value,
+          mensaje: form.querySelector('[name="mensaje"]').value
+        };
+        
+        // Build query string
+        const queryParams = new URLSearchParams(formData).toString();
+        const webhookUrl = 'http://localhost:5678/webhook/e69b7073-6ed2-41ac-a2bf-ad259512359c?' + queryParams;
+        
+        // Send GET request to N8N webhook
+        fetch(webhookUrl)
+        .then(response => {
+          form.style.display = 'none';
+          formSuccess.style.display = 'block';
+        })
+        .catch(error => {
+          // Still show success even if webhook fails
+          form.style.display = 'none';
+          formSuccess.style.display = 'block';
+        });
       }
     });
   </script>
