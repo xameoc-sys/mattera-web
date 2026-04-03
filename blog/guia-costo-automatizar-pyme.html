@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía: ¿Cuánto Cuesta Automatizar un Negocio en México? | Mattera</title>
+  <meta name="description" content="Desglose completo de costos para automatizar una PyME en México. Qué esperar invertir y cuál es el ROI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #262626;
+      --text: #ffffff;
+      --text-secondary: #a1a1a1;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 20px; background: rgba(10,10,10,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: white; text-decoration: none; }
+    .back-link { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    
+    main { padding: 100px 20px 60px; max-width: 750px; margin: 0 auto; }
+    
+    .article-meta { display: flex; gap: 16px; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px; }
+    .article-meta span { display: flex; align-items: center; gap: 6px; }
+    .article-meta .category { color: var(--accent); font-weight: 500; }
+    
+    .article-header h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 24px; line-height: 1.2; }
+    
+    .article-content h2 { font-size: 1.5rem; font-weight: 600; margin: 40px 0 20px; color: var(--accent); }
+    .article-content h3 { font-size: 1.25rem; font-weight: 600; margin: 30px 0 16px; }
+    .article-content p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem; }
+    .article-content ul, .article-content ol { color: var(--text-secondary); margin-bottom: 20px; padding-left: 24px; }
+    .article-content li { margin-bottom: 12px; }
+    .article-content strong { color: var(--text); }
+    
+    .price-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+    .price-table th, .price-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .price-table th { color: var(--accent); font-weight: 600; }
+    .price-table td { color: var(--text-secondary); }
+    .price-table .price { font-weight: 600; color: var(--text); }
+    .price-table tr:last-child td { border-bottom: none; }
+    
+    .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 24px 0; }
+    .price-card h3 { color: var(--accent); margin-bottom: 16px; font-size: 1.1rem; }
+    .price-card .amount { font-size: 2rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .price-card .amount span { font-size: 1rem; font-weight: 400; color: var(--text-secondary); }
+    .price-card ul { margin: 16px 0 0 0; padding-left: 20px; }
+    .price-card li { margin-bottom: 8px; font-size: 0.95rem; }
+    
+    .roi-box { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); border-radius: 12px; padding: 32px; margin: 40px 0; }
+    .roi-box h3 { color: white; font-size: 1.5rem; margin-bottom: 16px; }
+    .roi-box p { color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+    .roi-box ul { color: white; padding-left: 20px; }
+    .roi-box li { margin-bottom: 8px; }
+    
+    .related-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .related-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 24px; color: var(--accent); }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-decoration: none; color: inherit; transition: all 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .related-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; }
+    .related-card .read-more { color: var(--accent); font-size: 0.875rem; margin-top: 12px; display: inline-block; }
+    
+    footer { padding: 32px 20px; border-top: 1px solid var(--border); text-align: center; }
+    footer p { color: var(--text-secondary); font-size: 0.875rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    
+    @media (max-width: 768px) {
+      main { padding: 90px 20px 40px; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo">Mattera</a>
+      <a href="../index.html#blog" class="back-link">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+        Volver al blog
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="article-meta">
+        <span class="category">Guía Financiera</span>
+        <span><i data-lucide="clock" style="width: 14px; height: 14px;"></i> 10 min de lectura</span>
+      </div>
+      
+      <div class="article-header">
+        <h1>Guía: ¿Cuánto Cuesta Automatizar un Negocio en México?</h1>
+      </div>
+      
+      <div class="article-content">
+        <p>Una de las primeras preguntas que nos hacen es: "¿Cuánto tengo que invertir?" La respuesta honesta es: depende. Depende de qué quieras automatizar, qué tan complejo sea y qué herramientas uses. Pero aquí te doy un desglose real para que puedas planificar.</p>
+        
+        <h2>Costos según tipo de servicio</h2>
+        
+        <table class="price-table">
+          <tr>
+            <th>Servicio</th>
+            <th>Inversión Inicial</th>
+            <th>Mantenimiento Mensual</th>
+          </tr>
+          <tr>
+            <td>Chatbot básico (reglas)</td>
+            <td class="price">$5,000 - $10,000</td>
+            <td>$1,000 - $2,000</td>
+          </tr>
+          <tr>
+            <td>Chatbot con IA</td>
+            <td class="price">$15,000 - $30,000</td>
+            <td>$3,500 - $8,000</td>
+          </tr>
+          <tr>
+            <td>Agente de IA</td>
+            <td class="price">$20,000 - $50,000</td>
+            <td>$5,000 - $15,000</td>
+          </tr>
+          <tr>
+            <td>CRM automatizado</td>
+            <td class="price">$10,000 - $25,000</td>
+            <td>$2,000 - $5,000</td>
+          </tr>
+          <tr>
+            <td>Integraciones</td>
+            <td class="price">$8,000 - $20,000</td>
+            <td>$1,500 - $3,000</td>
+          </tr>
+          <tr>
+            <td>Página web profesional</td>
+            <td class="price">$15,000 - $40,000</td>
+            <td>$1,500 - $3,000</td>
+          </tr>
+          <tr>
+            <td>Automatización completa</td>
+            <td class="price">$50,000+</td>
+            <td>$10,000+</td>
+          </tr>
+        </table>
+        
+        <h2>¿Qué está incluido en el precio?</h2>
+        
+        <div class="price-card">
+          <h3>🤖 Chatbot con IA ($15,000 - $30,000)</h3>
+          <div class="amount">$3,500 - $8,000 <span>/mes</span></div>
+          <ul>
+            <li>Configuración del chatbot</li>
+            <li>Entrenamiento con información de tu negocio</li>
+            <li>Integración con WhatsApp</li>
+            <li>Respuestas a preguntas frecuentes</li>
+            <li>Seguimiento y optimización mensual</li>
+            <li>Soporte técnico</li>
+          </ul>
+        </div>
+        
+        <div class="price-card">
+          <h3>📊 CRM Automatizado ($10,000 - $25,000)</h3>
+          <div class="amount">$2,000 - $5,000 <span>/mes</span></div>
+          <ul>
+            <li>Configuración del CRM</li>
+            <li>Migración de datos existentes</li>
+            <li>Automatización de follow-up</li>
+            <li>Integraciones necesarias</li>
+            <li>Capacitación al equipo</li>
+            <li>Soporte y actualizaciones</li>
+          </ul>
+        </div>
+        
+        <h2>¿Vale la pena la inversión?</h2>
+        
+        <div class="roi-box">
+          <h3>📈 Retorno de Inversión</h3>
+          <p>En promedio, nuestros clientes ven ROI positivo en el primer mes:</p>
+          <ul>
+            <li><strong>Chatbot:</strong> Si te genera 5 ventas extra de $2,000 = $10,000MXN. Inversión: $3,500/mes. Ganancia neta: $6,500/mes.</li>
+            <li><strong>CRM:</strong> Si mejora retención 15% en $500,000 de ventas = $75,000MXN salvados. Inversión: $3,000/mes.</li>
+            <li><strong>Integraciones:</strong> Si ahorra 20 horas/mes de trabajo manual = $6,000MXN en tiempo recuperado.</li>
+          </ul>
+        </div>
+        
+        <h2>¿Se puede empezar con poco?</h2>
+        
+        <p>Sí. No necesitas automatizar todo de golpe. Empieza con lo que te dé mayor retorno:</p>
+        
+        <ol>
+          <li><strong>Chatbot básico:</strong> Desde $1,000/mes</li>
+          <li><strong>Un chatbot funcional:</strong> Desde $3,500/mes</li>
+          <li><strong>CRM simple:</strong> Desde $2,000/mes</li>
+        </ol>
+        
+        <p>Conforme ves resultados, inviertes más. Es la forma más segura de empezar.</p>
+        
+        <h2>Factores que afectan el precio</h2>
+        
+        <ul>
+          <li><strong>Complejidad:</strong> Más integraciones = más costo</li>
+          <li><strong>Volumen:</strong> Más conversaciones = más costo</li>
+          <li><strong>Personalización:</strong> Más personalizado = más desarrollo</li>
+          <li><strong>Herramientas:</strong> Algunas plataformas tienen licencias adicionales</li>
+        </ul>
+        
+        <h2>Conclusión</h2>
+        
+        <p>Automatizar no es un gasto—es una inversión. Y como toda inversión, debe dar retorno. Empieza con algo pequeño, mide resultados, y escala lo que funciona.</p>
+        
+        <p>¿Quieres un presupuesto personalizado? Contáctanos y te decimos exactamente qué necesitas y cuánto costaría para tu negocio.</p>
+      </div>
+      
+      <div class="related-section">
+        <h3 class="related-title">También te puede interesar</h3>
+        <div class="related-grid">
+          <a href="automatizacion-vs-contratar-personal.html" class="related-card">
+            <h4>Automatización vs. Contratar</h4>
+            <p>¿Cuándo conviene cada opción?</p>
+            <span class="read-more">Leer artículo →</span>
+          </a>
+          <a href="costo-de-no-automatizar.html" class="related-card">
+            <h4>El Costo de NO Automatizar</h4>
+            <p>Lo que pierdes por no actuar.</p>
+            <span class="read-more">Leer artículo →</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mattera. <a href="../index.html">Automatizaciones para Negocios</a></p>
+  </footer>
+
+  <script> lucide.createIcons(); </script>
+</body>
+</html>

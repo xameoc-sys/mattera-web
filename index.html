@@ -110,6 +110,26 @@
     .form-success p { color: var(--text-secondary); }
     
     /* Footer */
+    /* Blog */
+    .blog-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+    .blog-carousel { position: relative; margin-top: 48px; }
+    .carousel-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 20px; scrollbar-width: none; }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .blog-card { flex: 0 0 340px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; text-decoration: none; color: inherit; transition: all 0.3s; display: flex; flex-direction: column; }
+    .blog-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .blog-card-meta { display: flex; gap: 12px; margin-bottom: 16px; }
+    .blog-card .category { color: var(--accent); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .blog-card .read-time { color: var(--text-secondary); font-size: 0.75rem; }
+    .blog-card h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 12px; color: white; line-height: 1.4; }
+    .blog-card p { color: var(--text-secondary); font-size: 0.9rem; margin: 0; flex-grow: 1; }
+    .blog-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .blog-card .author { font-size: 0.8rem; color: var(--text-secondary); }
+    .blog-card .read-link { font-size: 0.875rem; color: var(--accent); font-weight: 500; display: flex; align-items: center; gap: 6px; }
+    .carousel-nav { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+    .carousel-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
+    .carousel-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .carousel-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    
     footer { padding: 48px 20px; border-top: 1px solid var(--border); text-align: center; }
     .footer-logo { height: 28px; }
     .footer-logo img { height: 100%; width: auto; }
@@ -311,6 +331,12 @@
       /* Footer */
       footer { padding: 32px 20px; }
       .footer-logo { height: 24px; }
+      /* Blog */
+      .blog-section { padding: 60px 20px; }
+      .blog-card { flex: 0 0 300px; padding: 20px; }
+      .blog-card h3 { font-size: 1rem; }
+      .blog-card p { font-size: 0.85rem; }
+      
       footer p { font-size: 0.8rem; }
     }
     
@@ -347,7 +373,7 @@
       <a href="#" class="logo"><img src="logo-final.png" alt="Mattera"></a>
       <nav id="nav">
         <a href="#servicios">Servicios</a>
-        <a href="#nosotros">Nosotros</a>
+        <a href="#blog">Blog</a>
         <a href="#proceso">Proceso</a>
         <a href="#contacto">Contacto</a>
         <a href="#contacto" class="btn">Solicitar Cotización</a>
@@ -506,6 +532,145 @@
     </div>
   </section>
 
+  <section id="blog" class="blog-section">
+    <div class="section-label">
+      <i data-lucide="book-open" style="width: 16px; height: 16px;"></i>
+      Blog
+    </div>
+    <h2 class="section-title">¿Por qué automatizar?</h2>
+    <p class="section-subtitle">Artículos que te ayudan a entender el valor de la automatización y cómo implementarla en tu negocio.</p>
+    
+    <div class="blog-carousel">
+      <div class="carousel-track" id="blogTrack">
+        <a href="blog/5-senales-necesitas-automatizacion.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Guía Práctica</span>
+            <span class="read-time">8 min</span>
+          </div>
+          <h3>5 Señales de que tu Negocio Necesita Automatización</h3>
+          <p>¿Tu equipo hace tareas repetitivas? ¿Pierdes clientes por respuestas lentas? Identifica las señales claras.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/automatizacion-vs-contratar-personal.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Análisis</span>
+            <span class="read-time">10 min</span>
+          </div>
+          <h3>Automatización vs. Contratar Personal</h3>
+          <p>¿Cuándo conviene automatizar y cuándo es mejor contratar? Análisis completo de costos y beneficios.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/10-tareas-para-automatizar-hoy.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Lista Práctica</span>
+            <span class="read-time">7 min</span>
+          </div>
+          <h3>10 Tareas que Puedes Automatizar Hoy</h3>
+          <p>Desde responder preguntas frecuentes hasta agendar citas. Ejemplos concretos para empezar.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/costo-de-no-automatizar.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Análisis Financiero</span>
+            <span class="read-time">9 min</span>
+          </div>
+          <h3>El Verdadero Costo de NO Automatizar</h3>
+          <p>Clientes perdidos, errores humanos, tiempo desperdiciado. Lo que tu negocio pierde cada día sin automatización.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/chatbot-aumenta-ventas-restaurante.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Caso de Éxito</span>
+            <span class="read-time">6 min</span>
+          </div>
+          <h3>Caso: Cómo un Chatbot Aumentó las Ventas</h3>
+          <p>Restaurante en Guadalajara implementó un chatbot y aumentó sus ventas en 35% en 3 meses.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/diferencia-chatbot-basico-ia.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Guía Comparativa</span>
+            <span class="read-time">8 min</span>
+          </div>
+          <h3>Chatbot Básico vs. Chatbot con IA</h3>
+          <p>¿Vale la pena invertir en un chatbot inteligente? Comparativa real de capacidades y resultados.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/competidores-usan-ia.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Mercado y Tendencias</span>
+            <span class="read-time">7 min</span>
+          </div>
+          <h3>Por qué tus Competidores Ya Usan IA</h3>
+          <p>Stats y razones para automatizar ahora. La IA ya no es ventaja—es requisito mínimo.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/guia-costo-automatizar-pyme.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Guía Financiera</span>
+            <span class="read-time">10 min</span>
+          </div>
+          <h3>Guía: ¿Cuánto Cuesta Automatizar?</h3>
+          <p>Desglose completo de costos para automatizar una PyME en México. Qué esperar invertir.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+        
+        <a href="blog/como-empezar-automatizacion.html" class="blog-card">
+          <div class="blog-card-meta">
+            <span class="category">Guía Práctica</span>
+            <span class="read-time">8 min</span>
+          </div>
+          <h3>Pasos para Empezar con Automatización</h3>
+          <p>Guía paso a paso para iniciar en automatización. Por dónde empezar y cómo hacerlo bien.</p>
+          <div class="card-footer">
+            <span class="author">Mattera</span>
+            <span class="read-link">Leer <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></span>
+          </div>
+        </a>
+      </div>
+      
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="prevBtn" aria-label="Artículo anterior">
+          <i data-lucide="chevron-left" style="width: 20px; height: 20px;"></i>
+        </button>
+        <button class="carousel-btn" id="nextBtn" aria-label="Siguiente artículo">
+          <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <section id="contacto">
     <div class="section-label">
       <i data-lucide="mail" style="width: 16px; height: 16px;"></i>
@@ -601,6 +766,29 @@
   <script>
     // Initialize Lucide icons
     lucide.createIcons();
+    
+    // Blog Carousel
+    const blogTrack = document.getElementById('blogTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const cardWidth = 364; // card width + gap
+    
+    function updateCarouselButtons() {
+      prevBtn.disabled = blogTrack.scrollLeft <= 0;
+      nextBtn.disabled = blogTrack.scrollLeft >= blogTrack.scrollWidth - blogTrack.clientWidth - 10;
+    }
+    
+    prevBtn.addEventListener('click', () => {
+      blogTrack.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      blogTrack.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+    
+    blogTrack.addEventListener('scroll', updateCarouselButtons);
+    window.addEventListener('resize', updateCarouselButtons);
+    updateCarouselButtons();
     
     // Header scroll effect
     const header = document.querySelector('header');

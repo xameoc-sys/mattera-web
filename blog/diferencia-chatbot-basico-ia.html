@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot Básico vs. Chatbot con IA: ¿Cuál Conviene? | Mattera</title>
+  <meta name="description" content="Conoce la diferencia entre un chatbot básico y uno con inteligencia artificial. ¿Por qué vale la pena invertir en uno inteligente?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #262626;
+      --text: #ffffff;
+      --text-secondary: #a1a1a1;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 20px; background: rgba(10,10,10,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: white; text-decoration: none; }
+    .back-link { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    
+    main { padding: 100px 20px 60px; max-width: 750px; margin: 0 auto; }
+    
+    .article-meta { display: flex; gap: 16px; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px; }
+    .article-meta span { display: flex; align-items: center; gap: 6px; }
+    .article-meta .category { color: var(--accent); font-weight: 500; }
+    
+    .article-header h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 24px; line-height: 1.2; }
+    
+    .article-content h2 { font-size: 1.5rem; font-weight: 600; margin: 40px 0 20px; color: var(--accent); }
+    .article-content h3 { font-size: 1.25rem; font-weight: 600; margin: 30px 0 16px; }
+    .article-content p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem; }
+    .article-content ul, .article-content ol { color: var(--text-secondary); margin-bottom: 20px; padding-left: 24px; }
+    .article-content li { margin-bottom: 12px; }
+    .article-content strong { color: var(--text); }
+    
+    .comparison-section { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 30px 0; }
+    .comparison-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .comparison-box.basic { border-color: #64748b; }
+    .comparison-box.ai { border-color: var(--accent); }
+    .comparison-box h3 { font-size: 1.1rem; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .comparison-box.basic h3 { color: #94a3b8; }
+    .comparison-box.ai h3 { color: var(--accent); }
+    .comparison-box ul { padding-left: 20px; margin: 0; }
+    .comparison-box li { margin-bottom: 10px; font-size: 0.95rem; }
+    .comparison-box li::before { content: "✗"; margin-right: 8px; color: #64748b; }
+    .comparison-box.ai li::before { content: "✓"; color: #22c55e; }
+    
+    .example-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 24px 0; }
+    .example-box h4 { color: var(--accent); margin-bottom: 12px; font-size: 1rem; }
+    .example-box .user-msg { color: #94a3b8; font-style: italic; margin-bottom: 8px; }
+    .example-box .basic-resp { color: #64748b; margin-bottom: 12px; padding: 12px; background: var(--bg); border-radius: 8px; }
+    .example-box .ai-resp { color: #22c55e; padding: 12px; background: var(--bg); border-radius: 8px; }
+    
+    .highlight-box { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); border-radius: 12px; padding: 32px; margin: 40px 0; text-align: center; }
+    .highlight-box h3 { color: white; font-size: 1.5rem; margin-bottom: 12px; }
+    .highlight-box p { color: rgba(255,255,255,0.9); margin: 0; }
+    
+    .related-section { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .related-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 24px; color: var(--accent); }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .related-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-decoration: none; color: inherit; transition: all 0.3s; }
+    .related-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .related-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); margin: 0; }
+    .related-card .read-more { color: var(--accent); font-size: 0.875rem; margin-top: 12px; display: inline-block; }
+    
+    footer { padding: 32px 20px; border-top: 1px solid var(--border); text-align: center; }
+    footer p { color: var(--text-secondary); font-size: 0.875rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    
+    @media (max-width: 768px) {
+      main { padding: 90px 20px 40px; }
+      .comparison-section { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo">Mattera</a>
+      <a href="../index.html#blog" class="back-link">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+        Volver al blog
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <div class="article-meta">
+        <span class="category">Guía Comparativa</span>
+        <span><i data-lucide="clock" style="width: 14px; height: 14px;"></i> 8 min de lectura</span>
+      </div>
+      
+      <div class="article-header">
+        <h1>Chatbot Básico vs. Chatbot con IA: ¿Cuál Conviene a tu Negocio?</h1>
+      </div>
+      
+      <div class="article-content">
+        <p>En el mercado hay dos tipos de chatbots: los básicos (que siguen reglas fijas) y los inteligentes (que usan inteligencia artificial). La diferencia entre uno y otro es enorme—y el precio también lo es. Aquí te explico cuál te conviene.</p>
+        
+        <h2>Comparación directa</h2>
+        
+        <div class="comparison-section">
+          <div class="comparison-box basic">
+            <h3>🤖 Chatbot Básico</h3>
+            <ul>
+              <li>Responde solo a comandos específicos</li>
+              <li>Si dices algo diferente, no entiende</li>
+              <li>Necesitas programar cada respuesta</li>
+              <li>No aprende con el tiempo</li>
+              <li>Menos natural para el usuario</li>
+              <li>Más barato pero limitado</li>
+              <li>Se "rompe" con preguntas inesperadas</li>
+            </ul>
+          </div>
+          
+          <div class="comparison-box ai">
+            <h3>🧠 Chatbot con IA</h3>
+            <ul>
+              <li>Enciende variaciones de preguntas</li>
+              <li>Entiende contexto y intención</li>
+              <li>Responde de forma natural</li>
+              <li>Aprende de cada conversación</li>
+              <li>Conversación fluida</li>
+              <li>Inversión mayor pero con ROI claro</li>
+              <li>Maneja situaciones complejas</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h2>Ejemplos en la vida real</h2>
+        
+        <div class="example-box">
+          <h4>📅 Escenario: Reservar una cita</h4>
+          <p class="user-msg">Usuario: "Hola, quiero agendar una cita para mañana en la tarde"</p>
+          <div class="basic-resp">
+            <strong>Básico:</strong> "Lo siento, no entiendo. Dime el día en formato DD/MM"
+          </div>
+          <div class="ai-resp">
+            <strong>Con IA:</strong> "¡Hola! Claro, ¿qué servicio necesitas y a qué hora te conviene mañana en la tarde? Tenemos disponibles 3pm, 4pm y 5pm."
+          </div>
+        </div>
+        
+        <div class="example-box">
+          <h4>🍕 Escenario: Pedir pizza</h4>
+          <p class="user-msg">Usuario: "Qué tal si mando una pizza mediana de peperoni para mi casa"</p>
+          <div class="basic-resp">
+            <strong>Básico:</strong> "Para pedir, escribe PEDIDO"
+          </div>
+          <div class="ai-resp">
+            <strong>Con IA:</strong> "¡Perfecto! Pizza mediana de peperoni a domicilio. ¿Quieres agregar algo más? Tenemos bebidas y postres. ¿A qué dirección la llevamos?"
+          </div>
+        </div>
+        
+        <h2>¿Cuándo usar cada uno?</h2>
+        
+        <h3>Chatbot básico puede servir si:</h3>
+        <ul>
+          <li>Solo necesitas botones de opción (sí/no, opción A/B)</li>
+          <li>Tus clientes siempre preguntan lo mismo</li>
+          <li>El presupuesto es muy limitado</li>
+          <li>Es para uso interno (inventario, comandos simples)</li>
+        </ul>
+        
+        <h3>Chatbot con IA es necesario si:</h3>
+        <ul>
+          <li>Quieres que tus clientes no noten que hablan con un bot</li>
+          <li>Manejas preguntas variadas y complejas</li>
+          <li>Quieres aumentar ventas, no solo informar</li>
+          <li>Tu negocio requiere conversación personalizada</li>
+          <li>Quieren seguimiento y relación con clientes</li>
+        </ul>
+        
+        <div class="highlight-box">
+          <h3>💡 El punto clave</h3>
+          <p>Un chatbot básico responde. Un chatbot con IA vende, retiene y hace crecer tu negocio. ¿De qué sirve ahorrar en el chatbot si pierdes ventas por caminos complejos?</p>
+        </div>
+        
+        <h2>La verdad sobre el precio</h2>
+        
+        <p>Sí, un chatbot con IA cuesta más. Pero pongámoslo en perspectiva:</p>
+        
+        <ul>
+          <li><strong>Chatbot básico:</strong> $1,000-$2,000 MXN/mes</li>
+          <li><strong>Chatbot con IA:</strong> $3,500-$8,000 MXN/mes</li>
+        </ul>
+        
+        <p>Si el chatbot con IA te genera 5 ventas más al mes (de $2,000 cada una) = $10,000 MXN en ventas adicionales.</p>
+        
+        <p>La diferencia de $2,000-$6,000 MXN se paga sola con UNA venta extra.</p>
+        
+        <h2>Conclusión</h2>
+        
+        <p>Si tu objetivo es solo estar presente en WhatsApp para no perder clientes, un chatbot básico puede funcionar. Pero si quieres un chatbot que realmente te ayude a vender, atender mejor y diferenciarte de la competencia, la inversión en IA vale cada centavo.</p>
+        
+        <p>¿Quieres saber qué tipo de chatbot necesita tu negocio? Podemos hacer una asesoría sin costo.</p>
+      </div>
+      
+      <div class="related-section">
+        <h3 class="related-title">También te puede interesar</h3>
+        <div class="related-grid">
+          <a href="chatbot-aumenta-ventas-restaurante.html" class="related-card">
+            <h4>Caso de Éxito: Restaurant</h4>
+            <p>Cómo un chatbot aumentó ventas en 35%.</p>
+            <span class="read-more">Leer artículo →</span>
+          </a>
+          <a href="automatizacion-vs-contratar-personal.html" class="related-card">
+            <h4>Automatización vs. Contratar</h4>
+            <p>¿Cuándo automatizar tiene más sentido?</p>
+            <span class="read-more">Leer artículo →</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mattera. <a href="../index.html">Automatizaciones para Negocios</a></p>
+  </footer>
+
+  <script> lucide.createIcons(); </script>
+</body>
+</html>
