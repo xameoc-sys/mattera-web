@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Páginas Web Personalizadas | Mattera - Automatizaciones para Negocios</title>
+  <meta name="description" content="Diseñamos y desarrollamos páginas web a tu medida, modernas y optimizadas. Atrae más clientes y vende más con tu sitio web profesional.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #262626;
+      --text: #ffffff;
+      --text-secondary: #a1a1a1;
+      --accent: #6366f1;
+      --accent-hover: #818cf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 20px; background: rgba(10,10,10,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: white; text-decoration: none; }
+    .back-link { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .back-link:hover { color: var(--accent); }
+    
+    main { padding: 100px 20px 60px; max-width: 800px; margin: 0 auto; }
+    
+    .service-header { text-align: center; margin-bottom: 48px; }
+    .service-icon-large { width: 80px; height: 80px; background: rgba(99,102,241,0.1); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; color: var(--accent); }
+    .service-header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 16px; }
+    .service-header p { font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+    
+    .section { margin-bottom: 48px; }
+    .section h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; gap: 12px; }
+    .section p { color: var(--text-secondary); margin-bottom: 16px; font-size: 1.05rem; }
+    .section ul { list-style: none; color: var(--text-secondary); }
+    .section li { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
+    .section li:last-child { border-bottom: none; }
+    .section li i { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    
+    .benefit-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 20px; }
+    .benefit-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+    .benefit-card p { color: var(--text-secondary); margin: 0; font-size: 1rem; }
+    .benefit-card .metric { font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    
+    .roi-box { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); border-radius: 16px; padding: 32px; text-align: center; margin: 48px 0; }
+    .roi-box h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; color: white; }
+    .roi-box p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 24px; }
+    .roi-example { background: rgba(255,255,255,0.15); border-radius: 12px; padding: 20px; text-align: left; }
+    .roi-example div { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .roi-example div:last-child { border-bottom: none; font-weight: 600; color: white; }
+    
+    .cta-section { text-align: center; padding: 48px 20px; background: var(--surface); border-radius: 24px; margin-top: 48px; }
+    .cta-section h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { color: var(--text-secondary); margin-bottom: 32px; font-size: 1.1rem; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--accent); color: white; text-decoration: none; font-weight: 600; font-size: 1rem; border-radius: 10px; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn:hover { background: var(--accent-hover); transform: scale(1.02); }
+    
+    footer { padding: 32px 20px; border-top: 1px solid var(--border); text-align: center; }
+    footer p { color: var(--text-secondary); font-size: 0.875rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+    
+    @media (max-width: 768px) {
+      main { padding: 90px 20px 40px; }
+      .service-header h1 { font-size: 1.75rem; }
+      .service-header p { font-size: 1rem; }
+      .section h2 { font-size: 1.25rem; }
+      .benefit-card { padding: 20px; }
+      .benefit-card .metric { font-size: 1.5rem; }
+      .roi-box { padding: 24px; }
+      .cta-section { padding: 32px 20px; }
+      .cta-section h3 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="../index.html" class="logo">Mattera</a>
+      <a href="../index.html#servicios" class="back-link">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i>
+        Volver a servicios
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="service-header">
+      <div class="service-icon-large">
+        <i data-lucide="globe" style="width: 40px; height: 40px;"></i>
+      </div>
+      <h1>Páginas Web Personalizadas</h1>
+      <p>Diseñamos y desarrollamos sitios web a tu medida, modernos y optimizados para convertir visitantes en clientes.</p>
+    </div>
+
+    <div class="section">
+      <h2><i data-lucide="help-circle" style="width: 24px; height: 24px;"></i> ¿Qué es una Página Web Personalizada?</h2>
+      <p>Una página web personalizada es un sitio diseñado específicamente para tu negocio, no una plantilla genérica. Cada elemento, desde el diseño hasta los colores, tipografías y funcionalidades, se crea pensando en tus clientes objetivo y tus objetivos de negocio.</p>
+      <p>No solo se ve bien - está optimizada para cargar rápido, posicionar en Google, y最重要的是: convertir visitantes en clientes.</p>
+      <p>Diseños modernos, desarrollos limpios, y soporte continuo.</p>
+    </div>
+
+    <div class="section">
+      <h2><i data-lucide="sparkles" style="width: 24px; height: 24px;"></i> ¿Por qué tu negocio lo necesita?</h2>
+      <ul>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div><strong>Primera impresión profesional</strong> - El 75% de los usuarios juzga tu negocio por el diseño de tu web.</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div><strong>Disponibilidad 24/7</strong> - Tu web trabaja cuando tú duermes, atendiendo clientes y capturando leads.</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div><strong>Alcance geográfico</strong> - Llega a clientes que nunca encontrarían tu negocio físico.</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div><strong>Posicionamiento en Google</strong> - Aparece en las primeras búsquedas cuando alguien busca lo que ofreces.</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div><strong>Control total</strong> - Sin dependencias de plataformas de terceros que pueden cambiar sus reglas.</div></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><i data-lucide="trending-up" style="width: 24px; height: 24px;"></i> Beneficios que se traducen en dinero</h2>
+      
+      <div class="benefit-card">
+        <div class="metric">+100%</div>
+        <h3>Leads capturados</h3>
+        <p>Una web profesional con formularios optimizados puede duplicar los leads que captura vs una web básica o redes sociales.</p>
+      </div>
+      
+      <div class="benefit-card">
+        <div class="metric">+40%</div>
+        <h3>Conversión de ventas</h3>
+        <p>Diseños optimizados para conversión + velocidad = más visitantes que se convierten en clientes.</p>
+      </div>
+      
+      <div class="benefit-card">
+        <div class="metric">-30%</div>
+        <h3>Costos de adquisición</h3>
+        <p>Tráfico orgánico de Google es gratis. Una web bien posicionada reduce lo que gastas en publicidad.</p>
+      </div>
+    </div>
+
+    <div class="roi-box">
+      <h3>💰 Ejemplo de Retorno de Inversión</h3>
+      <p>Un consultorio dental que invert $20,000 MXN en web profesional:</p>
+      <div class="roi-example">
+        <div><span>Inversión web</span><span>$20,000 MXN</span></div>
+        <div><span>Nuevos pacientes mensuales (web)</span><span>+8 pacientes</span></div>
+        <div><span>Valor promedio por paciente</span><span>$2,500 MXN</span></div>
+        <div><span> Ingreso mensual adicional</span><span>+$20,000 MXN</span></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><i data-lucide="settings" style="width: 24px; height: 24px;"></i> ¿Qué incluye tu web?</h2>
+      <ul>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Diseño personalizado creado para tu marca</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Diseño 100% responsive (móvil, tablet, desktop)</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Optimización SEO básica para Google</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Velocidad de carga optimizada</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Formularios de contacto y cotizaciones</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Integración con WhatsApp</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>SSL (candado verde de seguridad)</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Hosting y dominio por 1 año incluido</div></li>
+        <li><i data-lucide="check" style="width: 20px; height: 20px;"></i> <div>Soporte técnico por 3 meses</div></li>
+      </ul>
+    </div>
+
+    <div class="cta-section">
+      <h3>¿Listo para una web que genera ventas?</h3>
+      <p>Cuéntanos sobre tu negocio y te cotizamos tu página web a medida.</p>
+      <a href="../index.html#contacto" class="btn">
+        <i data-lucide="message-square" style="width: 20px; height: 20px;"></i>
+        Solicitar Cotización
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mattera. <a href="../index.html">Automatizaciones para Negocios</a></p>
+  </footer>
+
+  <script> lucide.createIcons(); </script>
+</body>
+</html>

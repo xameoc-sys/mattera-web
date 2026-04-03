@@ -212,6 +212,30 @@
       .service-card { 
         padding: 24px; 
         border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      .service-card .card-link {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 0.875rem;
+        color: var(--accent);
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(5px);
+        transition: all 0.3s ease;
+      }
+      .service-card:hover .card-link {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (max-width: 768px) {
+        .service-card .card-link {
+          opacity: 1;
+          transform: none;
+          margin-top: 16px;
+        }
       }
       .service-icon { width: 40px; height: 40px; margin-bottom: 16px; }
       .service-card h3 { font-size: 1.1rem; }
@@ -363,37 +387,42 @@
     <p class="section-subtitle">No importa el tamaño ni el giro de tu negocio. Tenemos la solución perfecta para ti.</p>
     
     <div class="services-grid">
-      <div class="service-card reveal">
+      <a href="servicios/chatbots.html" class="service-card reveal">
         <i data-lucide="bot" class="service-icon"></i>
         <h3>Chatbots Inteligentes</h3>
         <p>Atención a clientes 24/7 con IA que entiende y responde de forma natural.</p>
-      </div>
-      <div class="service-card reveal">
+        <span class="card-link">Ver detalles →</span>
+      </a>
+      <a href="servicios/agentes-ia.html" class="service-card reveal">
         <i data-lucide="brain" class="service-icon"></i>
         <h3>Agentes IA</h3>
         <p>Automatiza tareas repetitivas con agentes inteligentes que aprenden y mejoran.</p>
-      </div>
-      <div class="service-card reveal">
+        <span class="card-link">Ver detalles →</span>
+      </a>
+      <a href="servicios/crm.html" class="service-card reveal">
         <i data-lucide="users" class="service-icon"></i>
         <h3>CRM Personalizado</h3>
         <p>Gestiona tus clientes y ventas a tu manera, sin adaptarte a sistemas rígidos.</p>
-      </div>
-      <div class="service-card reveal">
+        <span class="card-link">Ver detalles →</span>
+      </a>
+      <a href="servicios/integraciones.html" class="service-card reveal">
         <i data-lucide="plug" class="service-icon"></i>
         <h3>Integraciones</h3>
         <p>Conecta todos tus sistemas y elimina el trabajo manual entre plataformas.</p>
-      </div>
-      <div class="service-card reveal">
+        <span class="card-link">Ver detalles →</span>
+      </a>
+      <a href="servicios/automatizacion-procesos.html" class="service-card reveal">
         <i data-lucide="workflow" class="service-icon"></i>
         <h3>Automatización de Procesos</h3>
         <p>Streamline flujos de trabajo empresariales para que hagas más en menos tiempo.</p>
-      </div>
-
-      <div class="service-card reveal">
+        <span class="card-link">Ver detalles →</span>
+      </a>
+      <a href="servicios/paginas-web.html" class="service-card reveal">
         <i data-lucide="globe" class="service-icon"></i>
         <h3>Páginas Web Personalizadas</h3>
         <p>Diseñamos y desarrollamos sitios web a tu medida, modernos y optimizados.</p>
-      </div>
+        <span class="card-link">Ver detalles →</span>
+      </a>
     </div>
   </section>
 
